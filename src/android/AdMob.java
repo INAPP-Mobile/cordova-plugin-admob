@@ -8,7 +8,6 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.mediation.admob.AdMobExtras;
 
 import org.apache.cordova.CallbackContext;
-import org.apache.cordova.LinearLayoutSoftKeyboardDetect;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.PluginResult;
 import org.apache.cordova.PluginResult.Status;
@@ -298,8 +297,8 @@ public class AdMob extends CordovaPlugin {
         adView.setAdUnitId(publisherId);
         adView.setAdSize(adSize);
         adView.setAdListener(new BannerListener());
-        LinearLayoutSoftKeyboardDetect parentView =
-            (LinearLayoutSoftKeyboardDetect) webView.getParent();
+        View parentView =
+            (View) webView.getParent();
         if (bannerAtTop) {
           parentView.addView(adView, 0);
         } else {
@@ -345,8 +344,8 @@ public class AdMob extends CordovaPlugin {
     @Override
     public void run() {
       if(adView != null) {
-        LinearLayoutSoftKeyboardDetect parentView =
-            (LinearLayoutSoftKeyboardDetect) webView.getParent();
+        View parentView =
+            (View) webView.getParent();
         parentView.removeView(adView);
       }
       // Notify the plugin.
