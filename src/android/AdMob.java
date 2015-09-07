@@ -297,8 +297,8 @@ public class AdMob extends CordovaPlugin {
         adView.setAdUnitId(publisherId);
         adView.setAdSize(adSize);
         adView.setAdListener(new BannerListener());
-        View parentView =
-            (View) webView.getParent();
+        ViewGroup parentView = (ViewGroup) engine.getView().getParent();
+
         if (bannerAtTop) {
           parentView.addView(adView, 0);
         } else {
@@ -344,8 +344,7 @@ public class AdMob extends CordovaPlugin {
     @Override
     public void run() {
       if(adView != null) {
-        View parentView =
-            (View) webView.getParent();
+        ViewGroup parentView = (ViewGroup) engine.getView().getParent();
         parentView.removeView(adView);
       }
       // Notify the plugin.
